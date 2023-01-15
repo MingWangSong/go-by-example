@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// golang支持多返回值
 func add(a int, b int) int {
 	return a + b
 }

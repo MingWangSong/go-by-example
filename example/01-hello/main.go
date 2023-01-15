@@ -6,6 +6,7 @@ import "fmt"
 	fmt.Println("hello world")
 }*/
 
+// 测试go安装正确
 func main() {
 	fmt.Println("Hello SongMingWang!")
 }

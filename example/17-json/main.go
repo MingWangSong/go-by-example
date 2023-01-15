@@ -6,7 +6,8 @@ import (
 )
 
 type userInfo struct {
-	Name  string
+	Name string
+	// 字段名改成age
 	Age   int `json:"age"`
 	Hobby []string
 }
@@ -17,10 +18,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println(buf)         // [123 34 78 97...]
+	fmt.Println(buf) // [123 34 78 97...]
+	// 字符串编码
 	fmt.Println(string(buf)) // {"Name":"wang","age":18,"Hobby":["Golang","TypeScript"]}
 
-	buf, err = json.MarshalIndent(a, "", "\t")
+	buf, err = json.MarshalIndent(a, " ", "\t")
 	if err != nil {
 		panic(err)
 	}
