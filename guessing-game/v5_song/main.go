@@ -12,6 +12,7 @@ import (
 
 func main() {
 	maxNum := 100
+	// 必须之前设置好随机种子，不然程序启动使用默认随机种子，导致后续的随机数不会变化
 	rand.Seed(time.Now().UnixNano())
 	secretNumber := rand.Intn(maxNum)
 	fmt.Println("Please input your guess")

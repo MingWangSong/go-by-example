@@ -52,11 +52,13 @@ type DictResponse struct {
 func query(word string) {
 	client := &http.Client{}
 	request := DictRequest{TransType: "en2zh", Source: word}
+	// 结构体序列化
 	buf, err := json.Marshal(request)
 	if err != nil {
 		log.Fatal(err)
 	}
 	var data = bytes.NewReader(buf)
+	// 考虑body是个很大的数据，因此使用流来避免数据全部放在内存中
 	req, err := http.NewRequest("POST", "https://api.interpreter.caiyunai.com/v1/dict", data)
 	if err != nil {
 		log.Fatal(err)

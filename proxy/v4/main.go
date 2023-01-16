@@ -18,6 +18,7 @@ const atypeHOST = 0x03
 const atypeIPV6 = 0x04
 
 func main() {
+	// 监听本机的1080端口
 	server, err := net.Listen("tcp", "127.0.0.1:1080")
 	if err != nil {
 		panic(err)
@@ -47,6 +48,7 @@ func process(conn net.Conn) {
 	}
 }
 
+// 认证阶段
 func auth(reader *bufio.Reader, conn net.Conn) (err error) {
 	// +----+----------+----------+
 	// |VER | NMETHODS | METHODS  |
@@ -145,6 +147,7 @@ func connect(reader *bufio.Reader, conn net.Conn) (err error) {
 	}
 	port := binary.BigEndian.Uint16(buf[:2])
 
+	//relay阶段
 	dest, err := net.Dial("tcp", fmt.Sprintf("%v:%v", addr, port))
 	if err != nil {
 		return fmt.Errorf("dial dst failed:%w", err)
